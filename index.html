@@ -1,11 +1,153 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading...</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden; /* Prevent scrolling during loading screen */
+        }
+
+        /* Loading screen styles */
+        .loading-screen {
+            background: #FDFBBE; /* Set the same background color */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1; /* Ensure it's on top of other content */
+        }
+
+        .logo-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo1, .logo2 {
+            position: absolute;
+            max-width: 80%;
+        }
+
+        /* Logo 1 sliding in from the left */
+        .logo1 {
+            width: 200px; /* Adjust size as needed */
+            transform: translateX(-200%); /* Start off-screen to the left */
+            animation: slide-to-side 3s ease-in-out forwards;
+        }
+
+        /* Logo 2 sliding in from the right */
+        .logo2 {
+            width: 150px; /* Adjust size as needed */
+            transform: translateX(200%); /* Start off-screen to the right */
+            animation: slide-in-from-right 3s ease-in-out forwards;
+        }
+
+        /* Animation for Logo 1 sliding to the side */
+        @keyframes slide-to-side {
+            0% {
+                transform: translateX(-200%);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(-30%); /* Adjusted to avoid overlap */
+                opacity: 1;
+            }
+        }
+
+        /* Animation for Logo 2 sliding in from the right */
+        @keyframes slide-in-from-right {
+            0% {
+                transform: translateX(200%);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(30%); /* Adjusted to avoid overlap */
+                opacity: 1;
+            }
+        }
+
+        /* Media Query for Tablet and Mobile Devices */
+        @media (max-width: 1024px) {
+            .logo1 {
+                width: 150px; /* Smaller size for mobile and tablets */
+                animation: slide-to-side-mobile 3s ease-in-out forwards; /* Use mobile animation */
+            }
+            .logo2 {
+                width: 100px; /* Smaller size for mobile and tablets */
+                animation: slide-in-from-right-mobile 3s ease-in-out forwards; /* Use mobile animation */
+            }
+        }
+
+        /* Mobile-specific animations */
+        @keyframes slide-to-side-mobile {
+            0% {
+                transform: translateX(-200%);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(-40%); /* Ends closer to center on mobile */
+                opacity: 1;
+            }
+        }
+
+        @keyframes slide-in-from-right-mobile {
+            0% {
+                transform: translateX(200%);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(40%); /* Ends closer to center on mobile */
+                opacity: 1;
+            }
+        }
+
+        /* Main content styles */
+        .main-content {
+            display: none; /* Hide main content initially */
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading screen -->
+    <div class="loading-screen">
+        <div class="logo-container">
+            <img src="alshamaliahnewlogo.png" alt="Al Shamalih Text Logo" class="logo1">
+            <img src="logo.png" alt="Al Shamalih Grill & Restaurant Logo" class="logo2">
+        </div>
+    </div>
+
+    <!-- Main content -->
+    <div class="main-content">
+<!DOCTYPE html>
 <!-- This site was created in Webflow. https://webflow.com --><!-- Last Published: Sun Aug 25 2024 13:23:31 GMT+0000 (Coordinated Universal Time) -->
 <html data-wf-domain="adels-amazing-site-8e08ee.webflow.io" data-wf-page="66ca196042a67fbc4f5ab23f"
     data-wf-site="66ca196042a67fbc4f5ab1c7" data-wf-status="1" lang="en">
 
 <head>
     <meta charset="utf-8" />
-    <title>Al Shamaliah</title>
+    <title>Adel&#x27;s Amazing Site</title>
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta content="Webflow" name="generator" />
     <link
@@ -782,4 +924,19 @@
         type="text/javascript"></script>
 </body>
 
+</html>
+    </div>
+
+    <script>
+        // Function to hide the loading screen and show main content
+        function showMainContent() {
+            document.querySelector('.loading-screen').style.display = 'none';
+            document.querySelector('.main-content').style.display = 'block';
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+
+        // Call the function after the animation completes
+        setTimeout(showMainContent, 3500); // 3.5 seconds delay (adjust as needed)
+    </script>
+</body>
 </html>
